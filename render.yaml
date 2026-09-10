@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: sify-migration-tool
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.13.5
+      - key: FLASK_SECRET
+        generateValue: true
+      - key: BASIC_USER
+        sync: false
+      - key: BASIC_PASSWORD
+        sync: false
+      - key: EXCEL_FILE
+        value: /opt/render/project/src/data/ESAF IP DETAILS.xlsx
